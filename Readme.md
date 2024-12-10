@@ -7,6 +7,10 @@ Welcome to **SolanaGuideBot**! A Telegram bot that interacts with the Solana Dev
 - **/history <address>** - View the recent transactions of a wallet address.
 - **/airdrop <address>** - Receive free SOL on the Devnet for testing (1 SOL).
 
+## Demo:
+Watch the demo of how the bot works : [SolanaGuideBot Demo](https://youtu.be/TMMseOdhJGw)
+
+
 ## Technologies Used
 - **Node.js** - JavaScript runtime environment.
 - **Telegraf** - Telegram bot framework.
