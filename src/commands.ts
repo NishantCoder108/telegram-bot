@@ -4,6 +4,30 @@ import { getTransactionHistory } from "./lib/getTransactionHistory";
 
 const connection = new Connection(process.env.RPC_URL as string);
 
+export const handleStart = async (ctx: Context): Promise<void> => {
+    try {
+        await ctx.replyWithMarkdown(
+            `👋 *Welcome to SolanaGuideBot!* 
+        
+I’m here to help you interact with the Solana Devnet blockchain seamlessly. 🚀
+        
+        🎯 *What can you do?*
+        - Check your SOL balance.
+        - View your transaction history.
+        - Request free SOL airdrops (Devnet).
+        
+💡 Use the */help* command to see detailed instructions for all available features.
+        
+Let’s explore Solana together! 🌟`
+        );
+    } catch (error) {
+        console.error("Error in help command:", error);
+        ctx.reply(
+            "❌ An error occurred while displaying the help message. Please try again later."
+        );
+    }
+};
+
 export const handleBalance = async (ctx: Context): Promise<void> => {
     if (ctx.message && "text" in ctx.message) {
         const messageText = ctx.message.text;
@@ -56,6 +80,7 @@ For any issues or questions, feel free to contact us. Happy exploring! 🌟`
         );
     }
 };
+
 export const handleAirdrop = async (ctx: Context): Promise<void> => {
     if (ctx.message && "text" in ctx.message) {
         const messageText = ctx.message.text;

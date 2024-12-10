@@ -1,23 +1,16 @@
 import "dotenv/config";
 import { Telegraf } from "telegraf";
-import { Connection, PublicKey } from "@solana/web3.js";
-import { handleBalance } from "./commands/balance";
-import { handleAirdrop, handleHelp, handleTxnsHistory } from "./commands";
+import {
+    handleAirdrop,
+    handleBalance,
+    handleHelp,
+    handleStart,
+    handleTxnsHistory,
+} from "./commands";
 
 const bot = new Telegraf(process.env.BOT_TOKEN || "");
 
-const connection = new Connection(process.env.RPC_URL as string);
-
-bot.start((ctx) => {
-    ctx.replyWithMarkdown(
-        `👋 *Welcome to SolanaGuideBot!* 
-
-This bot helps you interact with the Solana Devnet blockchain. 🚀
-
-Use /help to see the list of available commands and get started!`
-    );
-});
-
+bot.command("start", handleStart);
 bot.command("help", handleHelp);
 bot.command("balance", handleBalance);
 bot.command("airdrop", handleAirdrop);
